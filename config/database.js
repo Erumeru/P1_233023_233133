@@ -1,14 +1,14 @@
 // cargar variables de entorno
-require('dotenv').config();
+//require('dotenv').config();
 
 
 const { Sequelize } = require('sequelize');
 
 
 const sequelize = new Sequelize(
-  'baseAlumno',   
+  'ABCSequelize',   
   'root',
-  'admin',
+  'root',
   {
     host: 'localhost',
     dialect: 'mysql',

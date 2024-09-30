@@ -5,36 +5,30 @@ class Alumno extends Model {}
 
 Alumno.init(
   {
-    id: {
+    idAlumno: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
-    },
-    nombre: {
-      type: DataTypes.STRING(50),
+      autoIncrement: true,
       allowNull: false,
     },
-    apellido_paterno: {
-      type: DataTypes.STRING(50),
+    nombreAlumno: {
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
-    apellido_materno: {
-      type: DataTypes.STRING(50),
+    apellidoPaterno: {
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
-    id_carrera: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'carreras',
-        key: 'id',
-      },
+    apellidoMaterno: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
     },
   },
   {
-    sequelize, 
-    modelName: 'Alumno',  
-    tableName: 'alumnos',
-    timestamps: false, 
+    sequelize,
+    modelName: 'Alumno',
+    tableName: 'Alumno',
+    timestamps: false,
   }
 );
 

@@ -5,20 +5,16 @@ class Carrera extends Model {}
 
 Carrera.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    nombre: {
+    nombreCarrera: {
       type: DataTypes.STRING(100),
+      primaryKey: true,
       allowNull: false,
     },
   },
   {
     sequelize,
     modelName: 'Carrera',
-    tableName: 'carreras',
+    tableName: 'Carrera',
     timestamps: false,
   }
 );

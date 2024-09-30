@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Alumnos y Carreras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Gestión de Alumnos y Carreras</h1>
+        
+        <!-- Formulario para agregar alumno -->
+        <div class="mt-5">
+            <h3>Agregar Alumno</h3>
+            <form id="formAgregarAlumno">
+                <input type="text" id="nombreAlumno" placeholder="Nombre" required class="form-control mb-2">
+                <input type="text" id="apellidoPaterno" placeholder="Apellido Paterno" required class="form-control mb-2">
+                <input type="text" id="apellidoMaterno" placeholder="Apellido Materno" required class="form-control mb-2">
+                <button type="submit" class="btn btn-primary">Agregar Alumno</button>
+            </form>
+        </div>
+
+        <!-- Lista de alumnos -->
+        <div class="mt-5">
+            <h3>Lista de Alumnos</h3>
+            <ul id="listaAlumnos" class="list-group"></ul>
+        </div>
+
+        <!-- Formulario para agregar carrera -->
+        <div class="mt-5">
+            <h3>Agregar Carrera</h3>
+            <form id="formAgregarCarrera">
+                <input type="text" id="nombreCarrera" placeholder="Nombre de la Carrera" required class="form-control mb-2">
+                <button type="submit" class="btn btn-primary">Agregar Carrera</button>
+            </form>
+        </div>
+
+        <!-- Lista de carreras -->
+        <div class="mt-5">
+            <h3>Lista de Carreras</h3>
+            <ul id="listaCarreras" class="list-group"></ul>
+        </div>
+
+        <!-- Formulario para agregar alumno a carrera -->
+        <div class="mt-5">
+            <h3>Agregar Alumno a Carrera</h3>
+            <form id="formAgregarAlumnoCarrera">
+                <select id="selectAlumno" class="form-control mb-2" required></select>
+                <select id="selectCarrera" class="form-control mb-2" required></select>
+                <button type="submit" class="btn btn-primary">Agregar a Carrera</button>
+            </form>
+        </div>
+
+        <!-- Formulario para dar de baja a un alumno de una carrera -->
+        <div class="mt-5">
+            <h3>Dar de Baja a Alumno de Carrera</h3>
+            <form id="formBajaAlumnoCarrera">
+                <select id="selectBajaAlumno" class="form-control mb-2" required></select>
+                <select id="selectBajaCarrera" class="form-control mb-2" required></select>
+                <button type="submit" class="btn btn-danger">Dar de Baja</button>
+            </form>
+        </div>
+    </div>
+
+   
+</html>

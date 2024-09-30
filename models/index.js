@@ -1,12 +1,39 @@
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 const Alumno = require('./alumno');
 const Carrera = require('./carrera');
 
-// Relacionar Alumno con Carrera
-Carrera.hasMany(Alumno, {
-  foreignKey: 'id_carrera',
-});
+class AlumnoCarrera extends Model {}
 
-// Relacionar Carrera con Alumno
-Alumno.belongsTo(Carrera, {
-  foreignKey: 'id_carrera',
-});
+AlumnoCarrera.init(
+  {
+    idAlumno: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Alumno,
+        key: 'idAlumno',
+      },
+      primaryKey: true,
+    },
+    nombreCarrera: {
+      type: DataTypes.STRING(100),
+      references: {
+        model: Carrera,
+        key: 'nombreCarrera',
+      },
+      primaryKey: true,
+    },
+  },
+  {
+    sequelize,
+    modelName: 'AlumnoCarrera',
+    tableName: 'AlumnoCarrera',
+    timestamps: false,
+  }
+);
+
+// Establecer las relaciones
+Alumno.belongsToMany(Carrera, { through: AlumnoCarrera, foreignKey: 'idAlumno' });
+Carrera.belongsToMany(Alumno, { through: AlumnoCarrera, foreignKey: 'nombreCarrera' });
+
+module.exports = AlumnoCarrera;
