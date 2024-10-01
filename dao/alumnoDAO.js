@@ -1,4 +1,5 @@
 const Alumno = require('../models/alumno');
+const AlumnoCarrera = require('../models/index'); 
 
 async function crearAlumno(nombreAlumno, apellidoPaterno, apellidoMaterno) {
   try {
@@ -54,12 +55,13 @@ async function agregarAlumnoACarrera(idAlumno, nombreCarrera) {
       nombreCarrera: nombreCarrera,
     });
     console.log(`Alumno ${idAlumno} agregado a la carrera ${nombreCarrera}`);
-    return relacion;
+    return { success: true, relacion };
   } catch (error) {
     console.error('Error al agregar alumno a la carrera:', error);
-    throw error;
+    return { success: false, message: 'No se pudo agregar el alumno a la carrera. Inténtalo nuevamente.' }; 
   }
-}
+  }
+
 
 // Actualizar el nombre de un alumno
 async function actualizarNombreAlumno(idAlumno, nuevoNombreAlumno) {
