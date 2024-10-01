@@ -235,7 +235,7 @@ async function cargarSelectAlumnosBaja() {
         if (response.ok) {
             const alumnos = await response.json();
             const selectAlumno = document.getElementById('selectBajaAlumno');
-            selectAlumno.innerHTML = ''; /
+            selectAlumno.innerHTML = '';
 
             // Agregar cada alumno al select
             alumnos.forEach(alumno => {
@@ -276,6 +276,151 @@ async function cargarSelectCarrerasBaja() {
     }
 }
 
+// Función para enviar el formulario de eliminar carrera
+document.getElementById('formEliminarCarrera').addEventListener('submit', async function (event) {
+    event.preventDefault(); 
+    const nombreCarrera = document.getElementById('nombreCarreraEliminar').value;
+    try {
+        const response = await fetch('http://localhost:3000/dar-baja-carrera', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombreCarrera: nombreCarrera
+            }),
+        });
+
+        if (response.ok) {
+            const Carrera = await response.json();
+            console.log('Carrera eliminada:', Carrera);
+            document.getElementById('formEliminarCarrera').reset(); // Limpiar el formulario
+            await cargarCarreras(); // Cargar la lista de carreras después de agregar una
+        } else {
+            console.error('Error al eliminar carrera');
+        }
+    } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+    }
+});
+
+// Función para enviar el formulario de eliminar alumno
+document.getElementById('formEliminarAlumno').addEventListener('submit', async function (event) {
+    event.preventDefault(); 
+    const idAlumno = document.getElementById('idAlumnoEliminar').value;
+    try {
+        const response = await fetch('http://localhost:3000/dar-baja-alumno', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idAlumno: idAlumno
+            }),
+        });
+
+        if (response.ok) {
+            const alumno = await response.json();
+            console.log('Alumno elminado:', alumno);
+            document.getElementById('formEliminarAlumno').reset(); // Limpiar el formulario
+            await cargarCarreras(); // Cargar la lista de carreras después de agregar una
+        } else {
+            console.error('Error al eliminar carrera');
+        }
+    } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+    }
+});
+
+// Función para enviar el formulario de eliminar carrera
+document.getElementById('formEliminarCarrera').addEventListener('submit', async function (event) {
+    event.preventDefault(); 
+    const nombreCarrera = document.getElementById('nombreCarreraEliminar').value;
+    try {
+        const response = await fetch('http://localhost:3000/dar-baja-carrera', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombreCarrera: nombreCarrera
+            }),
+        });
+
+        if (response.ok) {
+            const Carrera = await response.json();
+            console.log('Carrera eliminada:', Carrera);
+            document.getElementById('formEliminarCarrera').reset(); // Limpiar el formulario
+            await cargarCarreras(); // Cargar la lista de carreras después de agregar una
+        } else {
+            console.error('Error al eliminar carrera');
+        }
+    } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+    }
+});
+
+// Función para enviar el formulario de actualizar alumno
+document.getElementById('formActualizarAlumno').addEventListener('submit', async function (event) {
+    event.preventDefault(); 
+    const id = document.getElementById('idAlumnoActualizar').value;
+    const nombreAlumnoNuevo = document.getElementById('nombreAlumnoNuevo').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/actualizar-alumno', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: id,
+                nombreAlumnoNuevo: nombreAlumnoNuevo
+            }),
+        });
+
+        if (response.ok) {
+            const alumno = await response.json();
+            console.log('Alumno actualizado:', alumno);
+            document.getElementById('formActualizarAlumno').reset(); // Limpiar el formulario
+            await cargarAlumnos(); // Cargar la lista de alumnos después
+        } else {
+            console.error('Error al actualizar alumno');
+        }
+    } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+    }
+});
+
+// Función para enviar el formulario de actualizar carrera
+document.getElementById('formActualizarCarrera').addEventListener('submit', async function (event) {
+    event.preventDefault(); 
+    const nombreCarreraViejo = document.getElementById('nombreCarreraActualizar').value;
+    const nombreCarreraNuevo = document.getElementById('nombreCarreraNuevo').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/actualizar-carrera', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombreCarreraViejo: nombreCarreraViejo,
+                nombreCarreraNuevo: nombreCarreraNuevo
+            }),
+        });
+
+        if (response.ok) {
+            const carrera = await response.json();
+            console.log('Carrera actualizado:', carrera);
+            document.getElementById('formActualizarCarrera').reset(); // Limpiar el formulario
+            await cargarCarreras(); // Cargar la lista de carrera después
+        } else {
+            console.error('Error al actualizar carrera');
+        }
+    } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+    }
+});
 // Llamar a las funciones de carga al iniciar
 cargarSelectAlumnos();
 cargarSelectCarreras();

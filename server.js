@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { crearAlumno, obtenerAlumnos, agregarAlumnoACarrera, quitarCarreraDeAlumno} = require('./dao/alumnoDAO'); // Asegúrate de tener la ruta correcta
-const { crearCarrera, obtenerCarreras } = require('./dao/carreraDAO');
+const { crearAlumno, obtenerAlumnos, agregarAlumnoACarrera, quitarCarreraDeAlumno, eliminarAlumno, actualizarNombreAlumno} = require('./dao/alumnoDAO'); // Asegúrate de tener la ruta correcta
+const { crearCarrera, obtenerCarreras, eliminarCarrera, actualizarNombreCarrera } = require('./dao/carreraDAO');
 const app = express();
 const PORT = 3000;
 
@@ -75,7 +75,52 @@ app.post('/dar-baja-alumno-carrera', async (req, res) => {
     }
 });
 
+// Eliminar alumno
+app.delete('/dar-baja-alumno', async (req, res) => {
+    const { idAlumno } = req.body;
 
+    try {
+        await eliminarAlumno(idAlumno);
+        res.status(201).json(relacion);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar alumno' });
+    }
+});
+
+// Eliminar carrera
+app.delete('/dar-baja-carrera', async (req, res) => {
+    const { nombreCarrera } = req.body;
+    try {
+
+        await eliminarCarrera(nombreCarrera);
+        res.status(201).json(relacion);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar carrera' });
+    }
+});
+
+// Actualizar carrera
+app.post('/actualizar-carrera', async (req, res) => {
+    const { nombreCarreraViejo, nombreCarreraNuevo } = req.body;
+    try {
+
+        await actualizarNombreCarrera(nombreCarreraViejo, nombreCarreraNuevo);
+        res.status(201).json(relacion);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar carrera' });
+    }
+});
+
+// Actualizar alumno nombre
+app.post('/actualizar-alumno', async (req, res) => {
+    const { id, nombreAlumnoNuevo } = req.body;
+    try {
+        await actualizarNombreAlumno(id, nombreAlumnoNuevo);
+        res.status(201).json(relacion);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar alumno' });
+    }
+});
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

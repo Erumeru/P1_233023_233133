@@ -41,7 +41,7 @@
             <h3>Lista de Carreras</h3>
             <ul id="listaCarreras" class="list-group"></ul>
         </div>
-
+        
         <!-- Formulario para agregar alumno a carrera -->
         <div class="mt-5">
             <h3>Agregar Alumno a Carrera</h3>
@@ -59,6 +59,44 @@
                 <select id="selectBajaAlumno" class="form-control mb-2" required></select>
                 <select id="selectBajaCarrera" class="form-control mb-2" required></select>
                 <button type="submit" class="btn btn-danger">Dar de Baja</button>
+            </form>
+        </div>
+
+         <!-- Formulario para eliminar carrera -->
+         <div class="mt-5">
+            <h3>Eliminar carrera</h3>
+            <form id="formEliminarCarrera">
+                <input type="text" id="nombreCarreraEliminar" placeholder="Nombre de la Carrera" required class="form-control mb-2">
+                <button type="submit" class="btn btn-danger">Eliminar Carrera</button>
+            </form>
+        </div>
+
+        <!-- Formulario para eliminar alumno -->
+        <div class="mt-5">
+            <h3>Eliminar alumno</h3>
+            <form id="formEliminarAlumno">
+                <input type="text" id="idAlumnoEliminar" placeholder="Id del alumno" required class="form-control mb-2">
+                <button type="submit" class="btn btn-danger">Eliminar alumno</button>
+            </form>
+        </div>
+
+        <!-- Formulario para actualizzar nombre carrera -->
+        <div class="mt-5">
+            <h3>Actualizar carrera</h3>
+            <form id="formActualizarCarrera">
+                <input type="text" id="nombreCarreraActualizar" placeholder="Nombre actual de la Carrera" required class="form-control mb-2">
+                <input type="text" id="nombreCarreraNuevo" placeholder="Nombre nuevo de la Carrera" required class="form-control mb-2">
+                <button type="submit" class="btn btn-primary">Actualizar carrera</button>
+            </form>
+        </div>
+
+        <!-- Formulario para actualizzar nombre alumno -->
+        <div class="mt-5">
+            <h3>Actualizar alumno</h3>
+            <form id="formActualizarAlumno">
+                <input type="text" id="idAlumnoActualizar" placeholder="Id actual del alumno" required class="form-control mb-2">
+                <input type="text" id="nombreAlumnoNuevo" placeholder="Nombre nuevo del alumno" required class="form-control mb-2">
+                <button type="submit" class="btn btn-primary">Actualizar alumno</button>
             </form>
         </div>
     </div>

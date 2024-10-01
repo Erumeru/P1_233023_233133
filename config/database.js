@@ -8,7 +8,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(
   'ABCSequelize',   
   'root',
-  'root',
+  'admin',
   {
     host: 'localhost',
     dialect: 'mysql',
